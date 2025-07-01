@@ -1,0 +1,151 @@
+/* Reset básico e configurações globais */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-areas: "header header" "aside main" "footer footer";
+    height: 100vh;
+}
+/* Estilos do Cabeçalho */
+header {
+    grid-area: header;
+    background-color: #1F1F1F;
+    border-bottom: 1px solid #333333;
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Alterado para aplicar em ambos os lados */
+    justify-content: space-between; /* Adicionado para alinhar o botão */
+}
+/* Estilos do Menu Lateral */
+aside {
+    grid-area: aside;
+    background-color: #1F1F1F;
+    border-right: 1px solid #333333;
+    padding-top: 20px;
+}
+aside nav ul { list-style-type: none; }
+aside nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+aside nav ul li a:hover { background-color: #333333; }
+aside nav ul li a.active { background-color: #333333; font-weight: bold; }
+/* Estilos do Conteúdo Principal */
+main {
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+}
+/* Estilos do Rodapé */
+footer {
+    grid-area: footer;
+    background-color: #1F1F1F;
+    border-top: 1px solid #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+/* Estilos do Conteúdo da Página */
+.main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+.search-input {
+    flex-grow: 1; 
+    margin: 0 20px;
+    padding: 10px 15px;
+    background-color: #333333;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+button { border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: opacity 0.3s; }
+button:hover { opacity: 0.8; }
+.btn-primary { background-color: #0d6efd; color: white; }
+.btn-secondary { background-color: #6c757d; color: white; }
+.btn-danger { background-color: #dc3545; color: white; }
+.btn-status {
+    background-color: #6c757d;
+    color: white;
+}
+.btn-status.ativo {
+    background-color: #198754;
+}
+
+.main-content table { width: 100%; border-collapse: collapse; }
+.main-content th, .main-content td { padding: 12px 15px; border: 1px solid #333333; text-align: left; }
+.main-content thead tr { background-color: #1F1F1F; }
+.main-content tbody tr:hover { background-color: #2a2a2a; }
+.main-content td button { margin-right: 5px; padding: 5px 10px; font-size: 0.9em; }
+
+/* Estilos do Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-overlay.show { display: flex; }
+.modal-content {
+    background-color: #1F1F1F;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    max-width: 90%;
+    border-top: 5px solid #0d6efd;
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #333333; padding-bottom: 10px; }
+.modal-close { background: none; border: none; font-size: 1.5rem; color: #FFFFFF; cursor: pointer; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; }
+.form-group input { width: 100%; padding: 10px; background-color: #333333; border: 1px solid #555555; border-radius: 5px; color: #FFFFFF; }
+.modal-footer { display: flex; justify-content: flex-end; margin-top: 20px; border-top: 1px solid #333333; padding-top: 15px; }
+.modal-footer button { margin-left: 10px; }
+
+/* Estilos da Notificação Toast */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
+}
+.toast-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+.toast-notification.success {
+    background-color: #198754;
+    border-left: 6px solid #157347;
+}
+.toast-notification.error {
+    background-color: #dc3545;
+    border-left: 6px solid #b02a37;
+}
